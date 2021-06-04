@@ -1,5 +1,3 @@
-import { type } from "os";
-
 export type Colors = {
   background: string;
   surface: string;

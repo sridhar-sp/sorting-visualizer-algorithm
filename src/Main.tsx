@@ -1,17 +1,22 @@
-import React, { useState } from "react";
-import styled, { DefaultTheme, ThemeProvider } from "styled-components";
+import { useState } from "react";
+import { ThemeProvider } from "styled-components";
 import {
   Header,
   HeaderTitle,
-  Body,
+  Content,
   Footer,
   Container,
+  ToolBar,
 } from "./common/components/GlobalComponent";
-
+import DropdownList from "./common/components/DropdownList";
+import BubbleSortScreen from "./sort/algorithm/screens/BubbleSortScreen";
 import { getTheme } from "./styles/Themes";
+
+const sortAlgorithmList = require("./assets/sort_algorithm_list.json");
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
+  const [sortAlgorithmId, setSortAlgorithmId] = useState("");
 
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
@@ -25,9 +30,14 @@ const App = () => {
             Sorting algorithem visualizer
           </HeaderTitle>
         </Header>
-        <Body>
-          <HeaderTitle>Body content</HeaderTitle>
-        </Body>
+        <ToolBar>
+          <DropdownList
+            dropdownList={sortAlgorithmList}
+            title="Select a sorting algorithm"
+            onChange={setSortAlgorithmId}
+          />
+        </ToolBar>
+        <Content>{getSortingVisualizerScreen(sortAlgorithmId)}</Content>
 
         <Footer>
           <HeaderTitle>Footer</HeaderTitle>
@@ -35,6 +45,19 @@ const App = () => {
       </Container>
     </ThemeProvider>
   );
+};
+
+const getSortingVisualizerScreen = (sortAlgorithmId: string) => {
+  switch (sortAlgorithmId) {
+    case "1":
+      return <BubbleSortScreen name="Bubble sort" />;
+    case "2":
+      return <BubbleSortScreen name="Selectino sort" />;
+    case "3":
+      return <BubbleSortScreen name="Quick sort" />;
+    default:
+      return <BubbleSortScreen name="Please select a sorting algorithm" />;
+  }
 };
 
 export default App;
