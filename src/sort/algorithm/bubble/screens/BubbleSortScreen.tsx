@@ -1,4 +1,10 @@
-import React, { PropsWithChildren, useState } from "react";
+import React, {
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
 import VerticalLine from "../components/VerticalLine";
 import HorizontalList from "../components/HorizontalList";
@@ -13,7 +19,7 @@ const BubbleSortScreen = (
 ) => {
   const maxValue = Math.max(props.datasetMaxValue, props.screenHeight);
 
-  console.log("Sort Component re-render");
+  console.log("Component re-render");
 
   const [counter, setCounter] = useState(0);
 
@@ -21,15 +27,24 @@ const BubbleSortScreen = (
 
   const [swapIndices, setSwapIndices] = useState([-1, -1]);
 
+  const isComponentActive = useRef<boolean>(true);
+
+  const cleanupCallback = useCallback(() => {
+    console.log("*** clean up ***");
+    isComponentActive.current = false;
+  }, []);
+
+  useEffect(() => {
+    return cleanupCallback;
+  }, [cleanupCallback]);
+
   const initiateBubbleSort = async () => {
     let swapIndex1 = 1;
     let swapIndex2 = -1;
 
-    for (let i = 0; i < data.length; i++) {
-      console.log("Running outer loop");
+    for (let i = 0; i < data.length && isComponentActive.current; i++) {
       let isSwapOccured = false;
-      for (let j = 0; j < data.length - 1; j++) {
-        console.log("Running innner loop");
+      for (let j = 0; j < data.length - 1 && isComponentActive.current; j++) {
         if (data[j].data > data[j + 1].data) {
           const temp = data[j];
           data[j] = data[j + 1];

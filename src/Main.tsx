@@ -98,15 +98,7 @@ const getSortingVisualizerScreen = (
         />
       );
     case "2":
-      return (
-        <BubbleSortScreen
-          name="Selectino sort"
-          dataset={dataset}
-          screenHeight={height}
-          screenWidth={width}
-          datasetMaxValue={datasetMaxValue}
-        />
-      );
+      return <HeaderTitle>Selection sort</HeaderTitle>;
     case "3":
       return (
         <BubbleSortScreen
