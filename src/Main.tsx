@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import {
   Header,
@@ -9,14 +9,36 @@ import {
   ToolBar,
 } from "./common/components/GlobalComponent";
 import DropdownList from "./common/components/DropdownList";
-import BubbleSortScreen from "./sort/algorithm/screens/BubbleSortScreen";
+import BubbleSortScreen from "./sort/algorithm/bubble/screens/BubbleSortScreen";
 import { getTheme } from "./styles/Themes";
+import { generateRandomNumbers } from "./utils/utils";
 
 const sortAlgorithmList = require("./assets/sort_algorithm_list.json");
 
 const App = () => {
   const [theme, setTheme] = useState("dark");
   const [sortAlgorithmId, setSortAlgorithmId] = useState("");
+
+  const [datasetMaxValue, setDatasetMaxValue] = useState(1000);
+  const [datasetLength, setDatasetLength] = useState(10);
+
+  const [dataset, setDataset] = useState(
+    generateRandomNumbers(datasetMaxValue, datasetLength)
+  );
+
+  const [contentHeight, setContentHeight] = useState(0);
+  const [contentWidth, setContentWidth] = useState(0);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const height = contentRef?.current?.clientHeight;
+    setContentHeight(height ? height : 0);
+
+    const width = contentRef?.current?.clientWidth;
+    setContentWidth(width ? width : 0);
+
+    console.log("Height " + height + " Width " + width);
+  }, [contentRef]);
 
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === "dark" ? "light" : "dark"));
@@ -37,7 +59,16 @@ const App = () => {
             onChange={setSortAlgorithmId}
           />
         </ToolBar>
-        <Content>{getSortingVisualizerScreen(sortAlgorithmId)}</Content>
+        <Content ref={contentRef}>
+          {dataset &&
+            getSortingVisualizerScreen(
+              sortAlgorithmId,
+              dataset,
+              datasetMaxValue,
+              contentHeight,
+              contentWidth
+            )}
+        </Content>
 
         <Footer>
           <HeaderTitle>Footer</HeaderTitle>
@@ -47,16 +78,54 @@ const App = () => {
   );
 };
 
-const getSortingVisualizerScreen = (sortAlgorithmId: string) => {
+const getSortingVisualizerScreen = (
+  sortAlgorithmId: string,
+  dataset: Array<number>,
+  datasetMaxValue: number,
+  height: number,
+  width: number
+) => {
   switch (sortAlgorithmId) {
     case "1":
-      return <BubbleSortScreen name="Bubble sort" />;
+      return (
+        <BubbleSortScreen
+          name="Bubble sort"
+          dataset={dataset}
+          screenHeight={height}
+          screenWidth={width}
+          datasetMaxValue={datasetMaxValue}
+        />
+      );
     case "2":
-      return <BubbleSortScreen name="Selectino sort" />;
+      return (
+        <BubbleSortScreen
+          name="Selectino sort"
+          dataset={dataset}
+          screenHeight={height}
+          screenWidth={width}
+          datasetMaxValue={datasetMaxValue}
+        />
+      );
     case "3":
-      return <BubbleSortScreen name="Quick sort" />;
+      return (
+        <BubbleSortScreen
+          name="Quick sort"
+          dataset={dataset}
+          screenHeight={height}
+          screenWidth={width}
+          datasetMaxValue={datasetMaxValue}
+        />
+      );
     default:
-      return <BubbleSortScreen name="Please select a sorting algorithm" />;
+      return (
+        <BubbleSortScreen
+          name="Please select a sorting algorithm"
+          dataset={dataset}
+          screenHeight={height}
+          screenWidth={width}
+          datasetMaxValue={datasetMaxValue}
+        />
+      );
   }
 };
 

@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 const Container = styled.div`
   height: 100vh;
-  border: 1px solid yellow;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -50,12 +49,12 @@ const DropDown = styled.select`
 `;
 const DropDownItem = styled.option``;
 
-// {/* <select name="cars" id="cars">
-//             <option value="volvo">Volvo</option>
-//             <option value="saab">Saab</option>
-//             <option value="mercedes">Mercedes</option>
-//             <option value="audi">Audi</option>
-//           </select> */}
+const SortVisualizerContainer = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+`;
 
 export {
   Container,
@@ -66,4 +65,5 @@ export {
   ToolBar,
   DropDown,
   DropDownItem,
+  SortVisualizerContainer,
 };
