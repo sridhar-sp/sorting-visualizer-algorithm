@@ -2,7 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Description
+
+This project shows a simple visual representation of the various sorting algorithm
 
 In the project directory, you can run:
 
