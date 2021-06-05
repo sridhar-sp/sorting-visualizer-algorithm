@@ -1,28 +1,79 @@
-import React, { PropsWithChildren } from "react";
+import React, { PropsWithChildren, useState } from "react";
 
 import VerticalLine from "../components/VerticalLine";
 import HorizontalList from "../components/HorizontalList";
 import { SortVisualizerContainer } from "../../../../common/components/GlobalComponent";
 import SortVisualizerScreenProp from "../../../types/SortVisualizerScreenProp";
 import SortTitle from "../components/SortTitle";
+import { sleep } from "../../../../utils/utils";
+import ArrayData from "../../../types/ArrayData";
 
 const BubbleSortScreen = (
   props: PropsWithChildren<SortVisualizerScreenProp>
 ) => {
   const maxValue = Math.max(props.datasetMaxValue, props.screenHeight);
+
+  console.log("Sort Component re-render");
+
+  const [counter, setCounter] = useState(0);
+
+  const [data, setData] = useState<Array<ArrayData>>(props.dataset);
+
+  const [swapIndices, setSwapIndices] = useState([-1, -1]);
+
+  const initiateBubbleSort = async () => {
+    let swapIndex1 = 1;
+    let swapIndex2 = -1;
+
+    for (let i = 0; i < data.length; i++) {
+      console.log("Running outer loop");
+      let isSwapOccured = false;
+      for (let j = 0; j < data.length - 1; j++) {
+        console.log("Running innner loop");
+        if (data[j].data > data[j + 1].data) {
+          const temp = data[j];
+          data[j] = data[j + 1];
+          data[j + 1] = temp;
+
+          isSwapOccured = true;
+          swapIndex1 = j;
+          swapIndex2 = j + 1;
+
+          console.log(
+            "Running swapping elements swapIndex1 " +
+              swapIndex1 +
+              " swapIndex2 " +
+              swapIndex2
+          );
+        }
+
+        if (isSwapOccured) {
+          setData((a) => data.slice());
+          setCounter(counter + 1);
+          setSwapIndices([swapIndex1, swapIndex2]);
+          await sleep(50);
+        }
+      }
+      if (!isSwapOccured) break;
+    }
+  };
+
   return (
     <SortVisualizerContainer>
       <HorizontalList>
-        {props.dataset.map((data) => (
+        {data.map((item, index, arr) => (
           <VerticalLine
-            key={data}
-            height={(data / maxValue) * 100 + "%"}
+            key={item.key}
+            height={(item.data / maxValue) * 100 + "%"}
             width={"50px"}
+            isSelected={index === swapIndices[0] || index === swapIndices[1]}
           />
         ))}
       </HorizontalList>
-      <h2>AAasdasdasdasdasdasdA</h2>
-      <SortTitle>{props.name}</SortTitle>
+      <SortTitle>
+        Swap index [{swapIndices[0]}, {swapIndices[1]}]
+      </SortTitle>
+      <button onClick={() => initiateBubbleSort()}>{props.name}</button>
     </SortVisualizerContainer>
   );
 };

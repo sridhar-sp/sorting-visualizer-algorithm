@@ -12,6 +12,7 @@ import DropdownList from "./common/components/DropdownList";
 import BubbleSortScreen from "./sort/algorithm/bubble/screens/BubbleSortScreen";
 import { getTheme } from "./styles/Themes";
 import { generateRandomNumbers } from "./utils/utils";
+import ArrayData from "./sort/types/ArrayData";
 
 const sortAlgorithmList = require("./assets/sort_algorithm_list.json");
 
@@ -20,9 +21,9 @@ const App = () => {
   const [sortAlgorithmId, setSortAlgorithmId] = useState("");
 
   const [datasetMaxValue, setDatasetMaxValue] = useState(1000);
-  const [datasetLength, setDatasetLength] = useState(10);
+  const [datasetLength, setDatasetLength] = useState(50);
 
-  const [dataset, setDataset] = useState(
+  const [dataset, setDataset] = useState<Array<ArrayData>>(
     generateRandomNumbers(datasetMaxValue, datasetLength)
   );
 
@@ -80,7 +81,7 @@ const App = () => {
 
 const getSortingVisualizerScreen = (
   sortAlgorithmId: string,
-  dataset: Array<number>,
+  dataset: Array<ArrayData>,
   datasetMaxValue: number,
   height: number,
   width: number

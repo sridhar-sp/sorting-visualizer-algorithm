@@ -52,7 +52,7 @@ function App() {
 
         setArray((a) => array.slice());
         setCounter(counter + 1);
-        await sleep(50);
+        await sleep(10);
       }
       if (!isSwapOccured) break;
     }
