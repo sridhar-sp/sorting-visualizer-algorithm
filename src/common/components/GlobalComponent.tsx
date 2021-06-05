@@ -32,12 +32,13 @@ const ToolBar = styled.div`
   display: flexbox;
 
   align-items: center;
+
   padding: 8px;
 `;
 
 const DropDown = styled.select`
   padding: 8px;
-  font-size: 14px;
+  font-size: 16px;
 
   background-color: ${({ theme }) => theme.colors.surface};
   color: ${({ theme }) => theme.colors.onSurface};
@@ -56,6 +57,35 @@ const SortVisualizerContainer = styled.div`
   height: 100%;
 `;
 
+const Input = styled.input`
+  font-size: 16px;
+  padding: 8px;
+
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.onSurface};
+  border-width: 1px;
+  ::placeholder {
+    color: ${({ theme }) => theme.colors.onSurface};
+  }
+  :hover {
+    opacity: 0.85;
+  }
+
+  outline: none;
+`;
+
+const PrimaryButton = styled.button`
+  font-size: 16px;
+  padding: 8px;
+  min-width: 75px;
+  background-color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.onPrimary};
+
+  :hover {
+    opacity: 0.85;
+  }
+`;
+
 export {
   Container,
   Header,
@@ -66,4 +96,6 @@ export {
   DropDown,
   DropDownItem,
   SortVisualizerContainer,
+  Input,
+  PrimaryButton,
 };

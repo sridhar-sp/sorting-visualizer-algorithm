@@ -8,6 +8,8 @@ const generateRandomNumbers = (
   max: number,
   limit: number
 ): Array<ArrayData> => {
+  if (max <= 0 || limit <= 0 || isNaN(max) || isNaN(limit)) return [];
+
   const randomArray = new Array<ArrayData>(limit);
   for (let i = 0; i < limit; i++) {
     randomArray[i] = {
@@ -18,4 +20,12 @@ const generateRandomNumbers = (
   return randomArray;
 };
 
-export { sleep, generateRandomNumbers };
+const safeParseInt = (num: string, defaultValue: number = 0) => {
+  try {
+    return parseInt(num);
+  } catch (e: any) {
+    return defaultValue;
+  }
+};
+
+export { sleep, generateRandomNumbers, safeParseInt };

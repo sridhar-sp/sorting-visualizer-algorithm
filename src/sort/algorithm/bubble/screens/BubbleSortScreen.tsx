@@ -8,9 +8,11 @@ import React, {
 
 import VerticalLine from "../components/VerticalLine";
 import HorizontalList from "../components/HorizontalList";
-import { SortVisualizerContainer } from "../../../../common/components/GlobalComponent";
+import {
+  PrimaryButton,
+  SortVisualizerContainer,
+} from "../../../../common/components/GlobalComponent";
 import SortVisualizerScreenProp from "../../../types/SortVisualizerScreenProp";
-import SortTitle from "../components/SortTitle";
 import { sleep } from "../../../../utils/utils";
 import ArrayData from "../../../types/ArrayData";
 
@@ -21,24 +23,26 @@ const BubbleSortScreen = (
 
   console.log("Component re-render");
 
-  const [counter, setCounter] = useState(0);
-
   const [data, setData] = useState<Array<ArrayData>>(props.dataset);
 
   const [swapIndices, setSwapIndices] = useState([-1, -1]);
 
-  const isComponentActive = useRef<boolean>(true);
+  const isComponentActive = useRef<boolean>(false);
 
   const cleanupCallback = useCallback(() => {
-    console.log("*** clean up ***");
+    console.log("Cleaning up bubble sort screen");
     isComponentActive.current = false;
   }, []);
 
   useEffect(() => {
+    setData(props.dataset);
+    isComponentActive.current = true;
     return cleanupCallback;
-  }, [cleanupCallback]);
+  }, [cleanupCallback, props.dataset]);
 
   const initiateBubbleSort = async () => {
+    console.log("Initated bubble sort");
+
     let swapIndex1 = 1;
     let swapIndex2 = -1;
 
@@ -64,9 +68,8 @@ const BubbleSortScreen = (
 
         if (isSwapOccured) {
           setData((a) => data.slice());
-          setCounter(counter + 1);
           setSwapIndices([swapIndex1, swapIndex2]);
-          await sleep(50);
+          await sleep(props.executionDelayInMillis);
         }
       }
       if (!isSwapOccured) break;
@@ -85,10 +88,10 @@ const BubbleSortScreen = (
           />
         ))}
       </HorizontalList>
-      <SortTitle>
-        Swap index [{swapIndices[0]}, {swapIndices[1]}]
-      </SortTitle>
-      <button onClick={() => initiateBubbleSort()}>{props.name}</button>
+
+      <PrimaryButton onClick={() => initiateBubbleSort()}>
+        Start sorting
+      </PrimaryButton>
     </SortVisualizerContainer>
   );
 };

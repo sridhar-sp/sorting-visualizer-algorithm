@@ -2,9 +2,10 @@ import ArrayData from "./ArrayData";
 
 type SortVisualizerScreenProp = {
   name: string;
-  datasetMaxValue: number;
   screenHeight: number;
   screenWidth: number;
+  executionDelayInMillis: number;
+  datasetMaxValue: number;
   dataset: Array<ArrayData>;
 };
 
