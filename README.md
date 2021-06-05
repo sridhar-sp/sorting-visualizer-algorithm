@@ -6,6 +6,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 This project shows a simple visual representation of the various sorting algorithm
 
+## Available scripts
+
 In the project directory, you can run:
 
 ### `yarn start`
