@@ -28,4 +28,8 @@ const safeParseInt = (num: string, defaultValue: number = 0) => {
   }
 };
 
-export { sleep, generateRandomNumbers, safeParseInt };
+const getRandomInt = (min: number, max: number): number => {
+  return Math.floor(Math.random() * (max - min + 1) + min);
+};
+
+export { sleep, generateRandomNumbers, safeParseInt, getRandomInt };

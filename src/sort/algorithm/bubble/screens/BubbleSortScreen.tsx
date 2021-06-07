@@ -27,6 +27,8 @@ const BubbleSortScreen = (
 
   const [swapIndices, setSwapIndices] = useState([-1, -1]);
 
+  const [isSortingInProgress, setIsSortingInProgress] = useState(false);
+
   const isComponentActive = useRef<boolean>(false);
 
   const cleanupCallback = useCallback(() => {
@@ -42,6 +44,9 @@ const BubbleSortScreen = (
 
   const initiateBubbleSort = async () => {
     console.log("Initated bubble sort");
+
+    props.exectionStatusCallback(true);
+    setIsSortingInProgress(true);
 
     let swapIndex1 = 1;
     let swapIndex2 = -1;
@@ -74,6 +79,9 @@ const BubbleSortScreen = (
       }
       if (!isSwapOccured) break;
     }
+
+    props.exectionStatusCallback(false);
+    setIsSortingInProgress(false);
   };
 
   return (
@@ -89,8 +97,11 @@ const BubbleSortScreen = (
         ))}
       </HorizontalList>
 
-      <PrimaryButton onClick={() => initiateBubbleSort()}>
-        Start sorting
+      <PrimaryButton
+        disabled={isSortingInProgress}
+        onClick={initiateBubbleSort}
+      >
+        Start
       </PrimaryButton>
     </SortVisualizerContainer>
   );

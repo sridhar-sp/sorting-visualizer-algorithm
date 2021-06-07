@@ -7,6 +7,7 @@ type SortVisualizerScreenProp = {
   executionDelayInMillis: number;
   datasetMaxValue: number;
   dataset: Array<ArrayData>;
+  exectionStatusCallback: (isRunning: boolean) => void;
 };
 
 export default SortVisualizerScreenProp;

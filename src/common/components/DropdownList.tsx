@@ -2,13 +2,15 @@ import React, { FunctionComponent, PropsWithChildren } from "react";
 import { DropDown, DropDownItem } from "./GlobalComponent";
 
 type Item = {
-  id: string;
+  key: string;
   name: string;
 };
 
 type Props = {
+  disabled: boolean;
   dropdownList: Array<Item>;
-  title: string;
+  title?: string;
+  value?: string;
   onChange?: (id: string) => void | null;
 };
 
@@ -17,12 +19,13 @@ const DropdownList: FunctionComponent<Props> = (
 ) => {
   return (
     <DropDown
+      {...props}
       onChange={(e) => {
         props.onChange?.(e.target.value);
       }}
     >
       {props.dropdownList.map((item) => (
-        <DropDownItem key={item.id} value={item.id}>
+        <DropDownItem key={item.key} value={item.key}>
           {item.name}
         </DropDownItem>
       ))}

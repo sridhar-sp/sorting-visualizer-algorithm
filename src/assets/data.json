@@ -1,0 +1,63 @@
+{
+  "showAdvancedControls": false,
+  "minDatasetValue": 1,
+  "maxDatasetValue": 99999,
+  "minDatasetSize": 5,
+  "maxDatasetSize": 350,
+  "sortAlgorithm": [
+    {
+      "key": 1,
+      "name": "Bubble sort"
+    },
+    {
+      "key": 2,
+      "name": "Selection sort"
+    },
+    {
+      "key": 3,
+      "name": "Quick sort"
+    }
+  ],
+  "executionDelayInMilliseconds": [
+    {
+      "key": 5,
+      "name": "5 milliseconds"
+    },
+    {
+      "key": 10,
+      "name": "10 milliseconds"
+    },
+    {
+      "key": 20,
+      "name": "20 milliseconds"
+    },
+    {
+      "key": 40,
+      "name": "40 milliseconds"
+    },
+    {
+      "key": 80,
+      "name": "80 milliseconds"
+    },
+    {
+      "key": 100,
+      "name": "100 milliseconds"
+    },
+    {
+      "key": 250,
+      "name": "250 milliseconds"
+    },
+    {
+      "key": 500,
+      "name": "500 milliseconds"
+    },
+    {
+      "key": 1000,
+      "name": "1000 milliseconds"
+    },
+    {
+      "key": 2000,
+      "name": "2000 milliseconds"
+    }
+  ]
+}
