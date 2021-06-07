@@ -27,11 +27,11 @@ jobs:
         with:
           node-version: '16.x'
         env:
-          GIT_EMAIL: GIT_EMAIL
-          GIT_USERNAME: GIT_USERNAME
+          GIT_EMAIL: ${{ secret.GIT_EMAIL }}
+          GIT_USERNAME: ${{ secret.GIT_USERNAME }}
       - run: |
-          git config user.email "${{ secret.GIT_EMAIL }}"
-          git config user.name "${{ secret.GIT_USERNAME }}"
+          git config user.email "${{ env.GIT_EMAIL }}"
+          git config user.name "${{ env.GIT_USERNAME }}"
       
       - run: npm install
       - run: npm run deploy
