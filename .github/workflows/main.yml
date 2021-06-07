@@ -27,9 +27,8 @@ jobs:
         with:
           node-version: '16.x'
       
-      - run: |
-          git config user.email "garu_sridhar@yahoo.com"
-          git config user.name "half-blood-prince"
+      - run: git config user.email "garu_sridhar@yahoo.com"
+      - run: git config user.name "half-blood-prince"
       
       - run: npm install
       - run: npm run deploy
