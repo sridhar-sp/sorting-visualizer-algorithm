@@ -26,12 +26,10 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: '16.x'
-        env:
-          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
-          GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+      
       - run: |
-          git config user.email "${{ env.GIT_EMAIL }}"
-          git config user.name "${{ env.GIT_USERNAME }}"
+          git config user.email "garu_sridhar@yahoo.com"
+          git config user.name "half-blood-prince"
       
       - run: npm install
       - run: npm run deploy
