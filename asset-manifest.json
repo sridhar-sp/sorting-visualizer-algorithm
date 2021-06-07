@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/half-blood-prince/static/js/main.9b63b609.chunk.js",
-    "main.js.map": "/half-blood-prince/static/js/main.9b63b609.chunk.js.map",
-    "runtime-main.js": "/half-blood-prince/static/js/runtime-main.271eb898.js",
-    "runtime-main.js.map": "/half-blood-prince/static/js/runtime-main.271eb898.js.map",
-    "static/js/2.372bf371.chunk.js": "/half-blood-prince/static/js/2.372bf371.chunk.js",
-    "static/js/2.372bf371.chunk.js.map": "/half-blood-prince/static/js/2.372bf371.chunk.js.map",
-    "static/js/3.b65b1117.chunk.js": "/half-blood-prince/static/js/3.b65b1117.chunk.js",
-    "static/js/3.b65b1117.chunk.js.map": "/half-blood-prince/static/js/3.b65b1117.chunk.js.map",
-    "index.html": "/half-blood-prince/index.html",
-    "static/js/2.372bf371.chunk.js.LICENSE.txt": "/half-blood-prince/static/js/2.372bf371.chunk.js.LICENSE.txt"
+    "main.js": "/half-blood-prince/sorting-visualizer-algorithm/static/js/main.9b63b609.chunk.js",
+    "main.js.map": "/half-blood-prince/sorting-visualizer-algorithm/static/js/main.9b63b609.chunk.js.map",
+    "runtime-main.js": "/half-blood-prince/sorting-visualizer-algorithm/static/js/runtime-main.0806378b.js",
+    "runtime-main.js.map": "/half-blood-prince/sorting-visualizer-algorithm/static/js/runtime-main.0806378b.js.map",
+    "static/js/2.ba89d99d.chunk.js": "/half-blood-prince/sorting-visualizer-algorithm/static/js/2.ba89d99d.chunk.js",
+    "static/js/2.ba89d99d.chunk.js.map": "/half-blood-prince/sorting-visualizer-algorithm/static/js/2.ba89d99d.chunk.js.map",
+    "static/js/3.b65b1117.chunk.js": "/half-blood-prince/sorting-visualizer-algorithm/static/js/3.b65b1117.chunk.js",
+    "static/js/3.b65b1117.chunk.js.map": "/half-blood-prince/sorting-visualizer-algorithm/static/js/3.b65b1117.chunk.js.map",
+    "index.html": "/half-blood-prince/sorting-visualizer-algorithm/index.html",
+    "static/js/2.ba89d99d.chunk.js.LICENSE.txt": "/half-blood-prince/sorting-visualizer-algorithm/static/js/2.ba89d99d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.271eb898.js",
-    "static/js/2.372bf371.chunk.js",
+    "static/js/runtime-main.0806378b.js",
+    "static/js/2.ba89d99d.chunk.js",
     "static/js/main.9b63b609.chunk.js"
   ]
 }
