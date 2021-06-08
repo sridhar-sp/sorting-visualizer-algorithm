@@ -52,6 +52,7 @@ jobs:
     
     steps:
       - uses: actions/checkout@v2
+      - run: git branch -a
       - run: git checkout gh-pages
       - name: Download a single artifact
         uses: actions/download-artifact@v2
