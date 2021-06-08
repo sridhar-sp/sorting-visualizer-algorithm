@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo $github.sha
+      - run: echo ${{ github.run_id }}
 #       - name: Use Node.js
 #         uses: actions/setup-node@v1
 #         with:
