@@ -22,42 +22,41 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      - run: echo ${{ github.run_id }}
-#       - name: Use Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: '16.x'
-#       - run: npm install
-#       - run: npm run build
-#       - name: 'Upload Artifact'
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: build
-#           path: build/
-#           retention-days: 1
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
+      - run: npm install
+      - run: npm run build
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build/
+          retention-days: 1
       
       
-#   deploy:
-#     name: Deploy
-#     needs: build
-#     runs-on: ubuntu-latest
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
     
-#     steps:
-#       - uses: actions/checkout@v2
-#         with:
-#           token: ${{secrets.PAT}}
-#       - run: git fetch --all
-#       - run: git checkout gh-pages
-#       - name: Download a single artifact
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: build
-#       - run: git status
-#       - run: git config --global user.email "garu_sridhar@yahoo.com"
-#       - run: git config --global user.name "half-blood-prince"
-#       - run: git add .
-#       - run: git commit -m "Automated commit from github actions"
-#       - run: git push origin gh-pages 
-#       - run: git status
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.PAT}}
+      - run: git fetch --all
+      - run: git checkout gh-pages
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+      - run: git status
+      - run: git config --global user.email "garu_sridhar@yahoo.com"
+      - run: git config --global user.name "half-blood-prince"
+      - run: git add .
+      - run: git commit -m "Automated commit from github actions. ID = ${{ github.run_id }}"
+      - run: git push origin gh-pages 
+      - run: git status
       
       
