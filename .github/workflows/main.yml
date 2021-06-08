@@ -60,6 +60,8 @@ jobs:
         with:
           name: build
       - run: git status
+      - run: git add .
+      - run: git commit -m "Automated commit from github actions"
       - run: git push origin gh-pages 
       - run: git status
       
