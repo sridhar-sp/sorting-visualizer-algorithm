@@ -37,5 +37,7 @@ jobs:
       - run: npm install
       - run: npm run build
       - run: git status
+      - uses: actions/checkout@v2
+      - run: git status
       - run: npm run deploy
       
