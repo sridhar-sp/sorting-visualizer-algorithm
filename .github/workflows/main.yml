@@ -16,38 +16,35 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-#   build:
-#     # The type of runner that the job will run on
-#     runs-on: ubuntu-latest
-# 
-#     steps:
-#       - uses: actions/checkout@v2
-#         with:
-#          token: ${{secrets.PAT}}
-#       - name: Use Node.js
-#         uses: actions/setup-node@v1
-#         with:
-#           node-version: '16.x'
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: '16.x'
 #         env:
 #           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #       - run: git config --global user.email "garu_sridhar@yahoo.com"
 #       - run: git config --global user.name "half-blood-prince"
 #       - run: git status
       
-#       - run: npm install
-#       - run: npm run build
-#       - run: git status
-#       - name: 'Upload Artifact'
-#         uses: actions/upload-artifact@v2
-#         with:
-#           name: build
-#           path: build/
-#           retention-days: 1
+      - run: npm install
+      - run: npm run build
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build/
+          retention-days: 1
       
       
   deploy:
     name: Deploy
-#     needs: build
+    needs: build
     runs-on: ubuntu-latest
     
     steps:
@@ -58,11 +55,12 @@ jobs:
       - run: git fetch --all
       - run: git branch -a
       - run: git checkout gh-pages
+      - name: Download a single artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: build
+      - run: git status
       - run: git push origin gh-pages 
-#       - name: Download a single artifact
-#         uses: actions/download-artifact@v2
-#         with:
-#           name: build
       - run: git status
       
       
