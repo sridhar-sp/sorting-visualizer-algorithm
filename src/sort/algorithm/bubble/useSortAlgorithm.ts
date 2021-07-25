@@ -77,9 +77,6 @@ const useSortAlgorithm = (
     props.exectionStatusCallback(true)
     setIsSortingInProgress(true)
 
-    let swapIndex1 = 1
-    let swapIndex2 = -1
-
     for (let i = 0; i < data.length - 1 && isComponentActive.current; i++) {
       let minIndex = i
       for (let j = i + 1; j < data.length && isComponentActive.current; j++) {
@@ -93,7 +90,7 @@ const useSortAlgorithm = (
         data[minIndex] = temp
 
         setData((a) => data.slice())
-        setSwapIndices([swapIndex1, swapIndex2])
+        setSwapIndices([i, minIndex])
         await sleep(props.executionDelayInMillis)
       }
     }
