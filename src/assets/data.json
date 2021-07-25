@@ -6,16 +6,12 @@
   "maxDatasetSize": 350,
   "sortAlgorithm": [
     {
-      "key": 1,
+      "key": "bubble_sort",
       "name": "Bubble sort"
     },
     {
-      "key": 2,
+      "key": "selection_sort",
       "name": "Selection sort"
-    },
-    {
-      "key": 3,
-      "name": "Quick sort"
     }
   ],
   "executionDelayInMilliseconds": [

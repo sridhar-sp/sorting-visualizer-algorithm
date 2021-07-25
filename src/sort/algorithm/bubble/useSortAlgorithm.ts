@@ -37,7 +37,7 @@ const useSortAlgorithm = (
   }, [cleanupCallback, props.dataset])
 
   const initiateBubbleSort = async () => {
-    console.log('Initated bubble sort')
+    console.log('Running bubble sort')
 
     props.exectionStatusCallback(true)
     setIsSortingInProgress(true)
@@ -71,8 +71,49 @@ const useSortAlgorithm = (
     setIsSortingInProgress(false)
   }
 
+  const initiateSelectionSort = async () => {
+    console.log('Running selection sort')
+
+    props.exectionStatusCallback(true)
+    setIsSortingInProgress(true)
+
+    let swapIndex1 = 1
+    let swapIndex2 = -1
+
+    for (let i = 0; i < data.length - 1 && isComponentActive.current; i++) {
+      let minIndex = i
+      for (let j = i + 1; j < data.length && isComponentActive.current; j++) {
+        if (data[j].data < data[minIndex].data) {
+          minIndex = j
+        }
+      }
+      if (minIndex !== i) {
+        const temp = data[i]
+        data[i] = data[minIndex]
+        data[minIndex] = temp
+
+        setData((a) => data.slice())
+        setSwapIndices([swapIndex1, swapIndex2])
+        await sleep(props.executionDelayInMillis)
+      }
+    }
+
+    props.exectionStatusCallback(false)
+    setIsSortingInProgress(false)
+  }
+
   const initiateSort = () => {
-    initiateBubbleSort()
+    switch (props.sortAlgorithmId) {
+      case 'bubble_sort':
+        initiateBubbleSort()
+        break
+      case 'selection_sort':
+        initiateSelectionSort()
+        break
+      default:
+        console.log('Unknow sort id')
+        break
+    }
   }
 
   return {

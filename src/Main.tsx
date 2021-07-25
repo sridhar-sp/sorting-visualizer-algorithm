@@ -30,7 +30,7 @@ const data: Config = require('./assets/data.json')
 const App = () => {
   const [theme, setTheme] = useState('dark')
 
-  const [sortAlgorithmId, setSortAlgorithmId] = useState('1')
+  const [sortAlgorithmId, setSortAlgorithmId] = useState('bubble_sort')
   const [executionDelayInMillis, setExecutionDelayInMillis] = useState(5)
 
   const [datasetMaxValue, setDatasetMaxValue] = useState(5000)
@@ -51,7 +51,7 @@ const App = () => {
     setContentWidth(width ? width : 0)
 
     setDataset(generateRandomNumbers(datasetMaxValue, datasetLength))
-  }, [contentRef, datasetMaxValue, datasetLength])
+  }, [contentRef, datasetMaxValue, datasetLength, sortAlgorithmId])
 
   const toggleTheme = () => {
     setTheme((currentTheme) => (currentTheme === 'dark' ? 'light' : 'dark'))
@@ -144,16 +144,18 @@ const App = () => {
           </PrimaryButton>
         </ToolBar>
         <Content ref={contentRef}>
-          {dataset &&
-            getSortingVisualizerScreen(
-              sortAlgorithmId,
-              dataset,
-              datasetMaxValue,
-              contentHeight,
-              contentWidth,
-              executionDelayInMillis,
-              setSortingInProgress,
-            )}
+          {dataset && (
+            <SortScreen
+              name={getSortAlgorithName(sortAlgorithmId)}
+              sortAlgorithmId={sortAlgorithmId}
+              dataset={dataset}
+              screenHeight={contentHeight}
+              screenWidth={contentWidth}
+              datasetMaxValue={datasetMaxValue}
+              executionDelayInMillis={executionDelayInMillis}
+              exectionStatusCallback={setSortingInProgress}
+            />
+          )}
         </Content>
 
         <Footer>
@@ -173,34 +175,9 @@ const App = () => {
   )
 }
 
-const getSortingVisualizerScreen = (
-  sortAlgorithmId: string,
-  dataset: Array<ArrayData>,
-  datasetMaxValue: number,
-  height: number,
-  width: number,
-  executionDelayInMillis: number,
-  exectionStatusCallback: (isRunning: boolean) => void,
-) => {
-  switch (sortAlgorithmId) {
-    case '1':
-      return (
-        <SortScreen
-          name="Bubble sort"
-          dataset={dataset}
-          screenHeight={height}
-          screenWidth={width}
-          datasetMaxValue={datasetMaxValue}
-          executionDelayInMillis={executionDelayInMillis}
-          exectionStatusCallback={exectionStatusCallback}
-        />
-      )
-    case '2':
-      return <HeaderTitle>Selection sort</HeaderTitle>
-
-    default:
-      return <HeaderTitle>Yet to develop</HeaderTitle>
-  }
+const getSortAlgorithName = (id: string): string => {
+  const element = data.sortAlgorithm.find((e: any) => e.key.toString() === id)
+  return element ? element.name : ''
 }
 
 export default App
