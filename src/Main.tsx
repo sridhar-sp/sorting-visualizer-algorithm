@@ -14,7 +14,7 @@ import {
   Link,
 } from './common/components/GlobalComponent'
 import DropdownList from './common/components/DropdownList'
-import SortScreen from './sort/algorithm/bubble/screens/SortScreen'
+import SortScreen from './sort/algorithm/screens/SortScreen'
 import { getTheme } from './styles/Themes'
 import {
   generateRandomNumbers,

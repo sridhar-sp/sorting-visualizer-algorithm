@@ -5,8 +5,8 @@ import HorizontalList from '../components/HorizontalList'
 import {
   PrimaryButton,
   SortVisualizerContainer,
-} from '../../../../common/components/GlobalComponent'
-import SortVisualizerScreenProp from '../../../types/SortVisualizerScreenProp'
+} from '../../../common/components/GlobalComponent'
+import SortVisualizerScreenProp from '../../types/SortVisualizerScreenProp'
 import useSortAlgorithm from '../useSortAlgorithm'
 
 const SortScreen = (props: PropsWithChildren<SortVisualizerScreenProp>) => {

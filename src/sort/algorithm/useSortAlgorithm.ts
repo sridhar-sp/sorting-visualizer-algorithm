@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { sleep } from '../../../utils/utils'
-import ArrayData from '../../types/ArrayData'
+import { sleep } from '../../utils/utils'
+import ArrayData from '../types/ArrayData'
 
-import SortVisualizerScreenProp from '../../types/SortVisualizerScreenProp'
+import SortVisualizerScreenProp from '../types/SortVisualizerScreenProp'
 
 type SortAlgorithmReturnType = {
   initiateSort: Function
