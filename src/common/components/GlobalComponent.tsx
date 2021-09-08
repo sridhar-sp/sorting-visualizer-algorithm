@@ -1,40 +1,67 @@
-import styled from "styled-components";
+import styled from 'styled-components'
+import { ReactComponent as GithubLogo } from 'src/assets/github-logo.svg'
 
 const Container = styled.div`
   height: 100vh;
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
-`;
+`
 
 const Header = styled.header`
   background-color: ${({ theme }) => theme.colors.surface};
-`;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+`
 
 const Content = styled.div`
   background-color: ${({ theme }) => theme.colors.background};
   flex: 1;
   flex-flow: column;
-`;
+`
 
-const Footer = styled.footer`
-  background-color: ${({ theme }) => theme.colors.surface};
-`;
+const H1 = styled.h1`
+  @media (max-width: 768px) {
+    font-size: 18px;
+  }
+  @media (max-width: 992px) {
+    font-size: 22px;
+  }
+`
 
-const HeaderTitle = styled.h1`
+const HeaderTitle = styled(H1)`
   color: ${({ theme }) => theme.colors.onSurface};
   text-align: center;
-`;
+  justify-content: center;
+  flex: 1;
+`
 
 const ToolBar = styled.div`
   background-color: ${({ theme }) => theme.colors.surface};
-  flex-direction: row;
   display: flex;
+  padding: 0px 8px;
+`
 
-  align-items: center;
+const FieldSet = styled.fieldset`
+  background-color: ${({ theme }) => theme.colors.background};
+  padding: 12px 16px;
+  border-radius: 6px;
+  border-width: 1px;
+  border-color: ${({ theme }) => theme.colors.onBackground};
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 8px;
+  row-gap: 8px;
+`
 
-  padding: 8px;
-`;
+const FieldSetLegend = styled.legend`
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.onSurface};
+  padding: 0px 4px;
+`
 
 const DropDown = styled.select`
   padding: 8px;
@@ -47,15 +74,17 @@ const DropDown = styled.select`
   :hover {
     opacity: 0.85;
   }
-`;
-const DropDownItem = styled.option``;
+  border-radius: 6px;
+`
+
+const DropDownItem = styled.option``
 
 const SortVisualizerContainer = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   height: 100%;
-`;
+`
 
 const Input = styled.input`
   font-size: 16px;
@@ -72,14 +101,14 @@ const Input = styled.input`
   }
 
   outline: none;
-`;
+`
 
 const PrimaryButton = styled.button`
   font-size: 16px;
   padding: 8px;
   min-width: 75px;
-  background-color: ${({ theme }) => theme.colors.primary};
-  color: ${({ theme }) => theme.colors.onPrimary};
+  background-color: ${({ theme }) => theme.colors.surface};
+  color: ${({ theme }) => theme.colors.onSurface};
 
   :hover {
     opacity: 0.85;
@@ -88,51 +117,45 @@ const PrimaryButton = styled.button`
     opacity: 0.6;
     cursor: not-allowed;
   }
-`;
 
-const FooterLinkText = styled.div`
-  flex-direction: row;
-  display: flexbox;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  padding: 8px;
+  border-radius: 6px;
+`
 
-  :hover {
-    opacity: 0.85;
-  }
-`;
-
-const Logo = styled.img`
+const ThemeLogo = styled.div`
   width: 32px;
   height: 32px;
-`;
-
-const FooterTitle = styled.h1`
-  color: ${({ theme }) => theme.colors.onSurface};
-  font-size: 18px;
-  text-align: center;
-  margin-left: 8px;
-`;
+  :hover {
+    opacity: 0.55;
+  }
+  align-self: center;
+`
+const GithubIcon = styled(GithubLogo)`
+  width: 32px;
+  height: 32px;
+  margin: 0px 16px;
+  :hover {
+    opacity: 0.55;
+  }
+`
 
 const Link = styled.a`
   text-decoration: none;
-`;
+`
 
 export {
   Container,
   Header,
   HeaderTitle,
   Content,
-  Footer,
   ToolBar,
   DropDown,
   DropDownItem,
   SortVisualizerContainer,
   Input,
   PrimaryButton,
-  Logo,
-  FooterTitle,
-  FooterLinkText,
+  ThemeLogo,
   Link,
-};
+  FieldSet,
+  FieldSetLegend,
+  GithubIcon,
+}

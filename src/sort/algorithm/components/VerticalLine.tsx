@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 type VerticalLineProp = {
-  height: any;
-  width: any;
-  isSelected: boolean;
-};
+  height: any
+  width: any
+  isSelected: boolean
+}
 
 const VerticalLine = styled.div.attrs((props: VerticalLineProp) => ({
   height: props.height,
@@ -20,6 +20,6 @@ const VerticalLine = styled.div.attrs((props: VerticalLineProp) => ({
   margin-left: 0.1%;
   margin-right: 0.1%;
   display: flex;
-`;
+`
 
-export default VerticalLine;
+export default VerticalLine
