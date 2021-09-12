@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/index.css"],"names":[],"mappings":"AAAA,KACI,QACJ,CAEA,EACI,mCACJ","file":"main.960c06c1.chunk.css","sourcesContent":["body {\n    margin: 0;\n}\n\n*{\n    font-family: 'Arima Madurai', cursive;\n}\n"]}
