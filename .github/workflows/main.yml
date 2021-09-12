@@ -50,7 +50,7 @@ jobs:
         with:
           name: build
       - run: git status
-      - run: git config --global user.email "garu_sridhar@yahoo.com"
+      - run: git config --global user.email "sridharthechosenone@gmail.com"
       - run: git config --global user.name "sridhar-sp"
       - run: git add .
       - run: git commit -m "Automated commit from github actions. ID = ${{ github.run_id }}"
