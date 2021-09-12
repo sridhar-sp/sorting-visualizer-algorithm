@@ -45,16 +45,16 @@ jobs:
       - uses: actions/checkout@v2
       - run: git fetch --all
       - run: git checkout gh-pages
+      - run: |
+          rm -rf *
+          echo "Remove old deployment"
       - name: Download a single artifact
         uses: actions/download-artifact@v2
         with:
           name: build
-      - run: git status
       - run: git config --global user.email "sridharthechosenone@gmail.com"
       - run: git config --global user.name "sridhar-sp"
       - run: git add .
       - run: git commit -m "Automated commit from github actions. ID = ${{ github.run_id }}"
-      - run: git push origin gh-pages 
-      - run: git status
-      
+      - run: git push origin gh-pages      
       
