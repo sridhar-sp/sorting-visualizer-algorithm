@@ -4,7 +4,7 @@ This project shows a simple visual representation of the various sorting algorit
 
 ##### See it in action
 
-https://half-blood-prince.github.io/sorting-visualizer-algorithm/
+https://sridhar-sp.github.io/sorting-visualizer-algorithm/
 
 ## Available scripts
 
